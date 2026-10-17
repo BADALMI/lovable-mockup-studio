@@ -10,33 +10,176 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ApplyRouteImport } from './routes/apply'
+import { Route as CompaniesRouteImport } from './routes/companies'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PlacementRouteImport } from './routes/placement'
+import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as RevenueLabRouteImport } from './routes/revenue-lab'
+import { Route as RinassaAiRouteImport } from './routes/rinassa-ai'
+import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
+import { Route as ProgramsFirstQuotaRouteImport } from './routes/programs.first-quota'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApplyRoute = ApplyRouteImport.update({
+  id: '/apply',
+  path: '/apply',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompaniesRoute = CompaniesRouteImport.update({
+  id: '/companies',
+  path: '/companies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlacementRoute = PlacementRouteImport.update({
+  id: '/placement',
+  path: '/placement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsRoute = ProgramsRouteImport.update({
+  id: '/programs',
+  path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RevenueLabRoute = RevenueLabRouteImport.update({
+  id: '/revenue-lab',
+  path: '/revenue-lab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RinassaAiRoute = RinassaAiRouteImport.update({
+  id: '/rinassa-ai',
+  path: '/rinassa-ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsIndexRoute = ProgramsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProgramsRoute,
+} as any)
+const ProgramsFirstQuotaRoute = ProgramsFirstQuotaRouteImport.update({
+  id: '/first-quota',
+  path: '/first-quota',
+  getParentRoute: () => ProgramsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/apply': typeof ApplyRoute
+  '/companies': typeof CompaniesRoute
+  '/contact': typeof ContactRoute
+  '/login': typeof LoginRoute
+  '/placement': typeof PlacementRoute
+  '/programs': typeof ProgramsRouteWithChildren
+  '/revenue-lab': typeof RevenueLabRoute
+  '/rinassa-ai': typeof RinassaAiRoute
+  '/programs/first-quota': typeof ProgramsFirstQuotaRoute
+  '/programs/': typeof ProgramsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/apply': typeof ApplyRoute
+  '/companies': typeof CompaniesRoute
+  '/contact': typeof ContactRoute
+  '/login': typeof LoginRoute
+  '/placement': typeof PlacementRoute
+  '/revenue-lab': typeof RevenueLabRoute
+  '/rinassa-ai': typeof RinassaAiRoute
+  '/programs/first-quota': typeof ProgramsFirstQuotaRoute
+  '/programs': typeof ProgramsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/apply': typeof ApplyRoute
+  '/companies': typeof CompaniesRoute
+  '/contact': typeof ContactRoute
+  '/login': typeof LoginRoute
+  '/placement': typeof PlacementRoute
+  '/programs': typeof ProgramsRouteWithChildren
+  '/revenue-lab': typeof RevenueLabRoute
+  '/rinassa-ai': typeof RinassaAiRoute
+  '/programs/first-quota': typeof ProgramsFirstQuotaRoute
+  '/programs/': typeof ProgramsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/apply'
+    | '/companies'
+    | '/contact'
+    | '/login'
+    | '/placement'
+    | '/programs'
+    | '/revenue-lab'
+    | '/rinassa-ai'
+    | '/programs/first-quota'
+    | '/programs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/apply'
+    | '/companies'
+    | '/contact'
+    | '/login'
+    | '/placement'
+    | '/revenue-lab'
+    | '/rinassa-ai'
+    | '/programs/first-quota'
+    | '/programs'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/apply'
+    | '/companies'
+    | '/contact'
+    | '/login'
+    | '/placement'
+    | '/programs'
+    | '/revenue-lab'
+    | '/rinassa-ai'
+    | '/programs/first-quota'
+    | '/programs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ApplyRoute: typeof ApplyRoute
+  CompaniesRoute: typeof CompaniesRoute
+  ContactRoute: typeof ContactRoute
+  LoginRoute: typeof LoginRoute
+  PlacementRoute: typeof PlacementRoute
+  ProgramsRoute: typeof ProgramsRouteWithChildren
+  RevenueLabRoute: typeof RevenueLabRoute
+  RinassaAiRoute: typeof RinassaAiRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +191,111 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apply': {
+      id: '/apply'
+      path: '/apply'
+      fullPath: '/apply'
+      preLoaderRoute: typeof ApplyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/companies': {
+      id: '/companies'
+      path: '/companies'
+      fullPath: '/companies'
+      preLoaderRoute: typeof CompaniesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/placement': {
+      id: '/placement'
+      path: '/placement'
+      fullPath: '/placement'
+      preLoaderRoute: typeof PlacementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs': {
+      id: '/programs'
+      path: '/programs'
+      fullPath: '/programs'
+      preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/revenue-lab': {
+      id: '/revenue-lab'
+      path: '/revenue-lab'
+      fullPath: '/revenue-lab'
+      preLoaderRoute: typeof RevenueLabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rinassa-ai': {
+      id: '/rinassa-ai'
+      path: '/rinassa-ai'
+      fullPath: '/rinassa-ai'
+      preLoaderRoute: typeof RinassaAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/': {
+      id: '/programs/'
+      path: '/'
+      fullPath: '/programs/'
+      preLoaderRoute: typeof ProgramsIndexRouteImport
+      parentRoute: typeof ProgramsRoute
+    }
+    '/programs/first-quota': {
+      id: '/programs/first-quota'
+      path: '/first-quota'
+      fullPath: '/programs/first-quota'
+      preLoaderRoute: typeof ProgramsFirstQuotaRouteImport
+      parentRoute: typeof ProgramsRoute
+    }
   }
 }
 
+interface ProgramsRouteChildren {
+  ProgramsFirstQuotaRoute: typeof ProgramsFirstQuotaRoute
+  ProgramsIndexRoute: typeof ProgramsIndexRoute
+}
+
+const ProgramsRouteChildren: ProgramsRouteChildren = {
+  ProgramsFirstQuotaRoute: ProgramsFirstQuotaRoute,
+  ProgramsIndexRoute: ProgramsIndexRoute,
+}
+
+const ProgramsRouteWithChildren = ProgramsRoute._addFileChildren(
+  ProgramsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ApplyRoute: ApplyRoute,
+  CompaniesRoute: CompaniesRoute,
+  ContactRoute: ContactRoute,
+  LoginRoute: LoginRoute,
+  PlacementRoute: PlacementRoute,
+  ProgramsRoute: ProgramsRouteWithChildren,
+  RevenueLabRoute: RevenueLabRoute,
+  RinassaAiRoute: RinassaAiRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
